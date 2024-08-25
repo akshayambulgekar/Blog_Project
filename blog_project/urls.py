@@ -17,13 +17,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from .views import login_view,register_view
+from . import views
 
 def home_view(request):
     return HttpResponse("Welcome to the Blog API!")
 
+def test_view(request):
+    return render(request, 'test.html')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('blog.urls')),
-    path('', home_view, name='home'),
+    path('register/', register_view, name='register'),
+    # path('', home_view, name='home'),
+    path('login/', login_view, name='login'),
+    path('test/', test_view, name='test'),
+    path('', include('blog.urls')), 
 ]
 

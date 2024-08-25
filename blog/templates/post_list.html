@@ -1,0 +1,161 @@
+<!-- templates/post_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Navigation Links */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .cretae{
+            background-color: #4CAF50;
+        }
+
+        {% comment %} .nav a:hover {
+            background-color: #45a049;
+        } {% endcomment %}
+
+        /* Post List Styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Logout Button */
+        button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        {% comment %} button:hover {
+            background-color: #d32f2f;
+        } {% endcomment %}
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .nav {
+                flex-direction: column;
+            }
+
+            .nav a,
+            button {
+                margin-bottom: 10px;
+                width: 100%;
+                text-align: center;
+                {% comment %} background-color: #4CAF50; {% endcomment %}
+            }
+        }
+
+        .login{
+            background-color: #0000FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .register{
+            background-color: #FF7F7F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Blog Posts</h1>
+
+    <div class="nav">
+       
+{% comment %}         
+<a href="{% url 'logout' %}">  <button class="logout-button"> Logout </button> </a> {% endcomment %}
+
+{% if user.is_authenticated %}
+<a  class = 'cretae'href="{% url 'post_create' %}">Create New Post</a>
+            <a href="{% url 'logout' %}"><button class="logout">Logout</button></a>
+        {% else %}
+            <a class="login" href="{% url 'login' %}">Login</a>
+            <a class="register" href="{% url 'register' %}">Register</a>
+        {% endif %}
+    
+    </div>
+
+    
+
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                <span>by {{ post.author }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>

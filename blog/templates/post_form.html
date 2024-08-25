@@ -1,0 +1,112 @@
+<!-- templates/post_form.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if form.instance.pk %}Edit Post{% else %}New Post{% endif %}</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Form Styling */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form p {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Cancel Link Styling */
+        .cancel-link {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 10px;
+            text-decoration: none;
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cancel-link:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            form {
+                width: 100%;
+                padding: 15px;
+            }
+
+            button,
+            .cancel-link {
+                width: 100%;
+                text-align: center;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Edit Post{% else %}New Post{% endif %}</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+        <a href="{% url 'post_list' %}" class="cancel-link">Cancel</a>
+    </form>
+</body>
+</html>
