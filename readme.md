@@ -64,14 +64,14 @@ A simple blog application built with Django, featuring user authentication, CRUD
 
 8. **API Endpoints**
    Here are the available API endpoints:
-   - Register User: POST /api/register/
-   -Login User: POST /api/token/ (obtain JWT)
-   -Refresh Token: POST /api/token/refresh/
-   -List Posts: GET /api/posts/
-   -Create Post: POST /api/posts/ (Authenticated users)
-   -Retrieve Post: GET /api/posts/<id>/
-   -Update Post: PUT /api/posts/<id>/ (Authenticated and authorized users)
-   -Delete Post: DELETE /api/posts/<id>/ (Authenticated and authorized users)
+  - Register User: POST /api/register/
+  - Login User: POST /api/token/ (obtain JWT)
+  - Refresh Token: POST /api/token/refresh/
+  - List Posts: GET /api/posts/
+  - Create Post: POST /api/posts/ (Authenticated users)
+  - Retrieve Post: GET /api/posts/<id>/
+  - Update Post: PUT /api/posts/<id>/ (Authenticated and authorized users)
+  - Delete Post: DELETE /api/posts/<id>/ (Authenticated and authorized users)
 
 
 
