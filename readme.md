@@ -33,37 +33,45 @@ A simple blog application built with Django, featuring user authentication, CRUD
    git clone https://github.com/yourusername/django-blog-project.git
    cd django-blog-project
 
-2. **Install Dependencies**
+2. **Create a virtual environment:**
    ```bash
-      npm install
+      python -m venv venv
 
-3. **Set Up Environment Variables**
-   Create a .env file in the root directory of the project and add the following environment variable:
+
+3. **Activate the virtual environment:**
+  
    ```bash
-   MONGODB_URI=mongodb://localhost:27017/todo-list-app
-   PORT=3000
+   venv\Scripts\activate
 
-4. **Ensure MongoDB is Running**
-   For a local MongoDB installation, ensure the MongoDB service is running. Open a terminal and start the MongoDB server:
+
+4. **Install the dependencies:**
+   
    ```bash
-      mongod
+      pip install -r requirements.txt
 
-5. **Running the Application**
-   To start the application, run:
+
+5. **Apply the migrations:**
+
    ```bash
-      npm start
-
-   Or, if you prefer using nodemon for development (auto-restarts the server on changes):
+      python manage.py migrate
+6. **createsuperuser**
    ```bash
-   npm run dev
+      python manage.py createsuperuser
 
-6. **API Endpoints**
+7. ***Run the development server***:
+   ```bash
+      python manage.py runserver
+
+8. **API Endpoints**
    Here are the available API endpoints:
-   - GET /api/tasks: Retrieve a list of all tasks.
-   - GET /api/tasks/: Retrieve a single task by its ID.
-   - POST /api/tasks: Create a new task.
-   - PUT /api/tasks/: Update an existing task.
-   - DELETE /api/tasks/: Delete a task.
+   - Register User: POST /api/register/
+   -Login User: POST /api/token/ (obtain JWT)
+   -Refresh Token: POST /api/token/refresh/
+   -List Posts: GET /api/posts/
+   -Create Post: POST /api/posts/ (Authenticated users)
+   -Retrieve Post: GET /api/posts/<id>/
+   -Update Post: PUT /api/posts/<id>/ (Authenticated and authorized users)
+   -Delete Post: DELETE /api/posts/<id>/ (Authenticated and authorized users)
 
 
 
