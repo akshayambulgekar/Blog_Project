@@ -30,7 +30,7 @@ A simple blog application built with Django, featuring user authentication, CRUD
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/django-blog-project.git
+   git clone [https://github.com/yourusername/django-blog-project.git](https://github.com/akshayambulgekar/Blog_Project.git)
    cd django-blog-project
 
 2. **Create a virtual environment:**
